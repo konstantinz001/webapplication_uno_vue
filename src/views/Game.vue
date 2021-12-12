@@ -163,9 +163,6 @@ export default {
               index +
               ">"
           );
-          document.getElementById(index).addEventListener("click", function () {
-            ref.setBlackCard(index);
-          });
         } else {
           $("#handCard").append(
             '<img class="img-fluid handCards" src="' +
@@ -174,17 +171,27 @@ export default {
               index +
               ">"
           );
-          document.getElementById(index).addEventListener("click", function () {
-            ref.setCard(index);
-          });
         }
+
         index = index + 1;
       });
+
+      for (let i = 0; i < index; i++) {
+        if (document.getElementById(i).getAttribute("src").includes("Black_")) {
+          document.getElementById(i).addEventListener("click", function () {
+            ref.setBlackCard(i);
+          });
+        } else {
+          document.getElementById(i).addEventListener("click", function () {
+            ref.setCard(i);
+          });
+        }
+      }
 
       if (this.wishColor != "") {
         this.wishColor = "";
         this.wishValue = "";
-        location.reload();
+        //location.reload();
       }
       this.index = index;
     },
@@ -219,7 +226,7 @@ export default {
       }
       let options = {
         headers: { "Content-Type": "application/json" },
-        url: "http://localhost:9000/set",
+        url: "http://localhost:9000/set/" + cardIndex,
         method: "get",
         data: json,
       };
@@ -233,7 +240,6 @@ export default {
         playerCardsNext,
       } = result;
       ref.updateGame;
-      alert("Passt");
     },
 
     getCard: async function () {
@@ -311,16 +317,18 @@ export default {
     });
 
     document.getElementById("wishRed").addEventListener("click", function () {
-        ref.setWishColor('red')
+      ref.setWishColor("red");
     });
     document.getElementById("wishGreen").addEventListener("click", function () {
-        ref.setWishColor('green')
+      ref.setWishColor("green");
     });
-    document.getElementById("wishYellow").addEventListener("click", function () {
-        ref.setWishColor('yellow')
-    });
+    document
+      .getElementById("wishYellow")
+      .addEventListener("click", function () {
+        ref.setWishColor("yellow");
+      });
     document.getElementById("wishBlue").addEventListener("click", function () {
-        ref.setWishColor('blue')
+      ref.setWishColor("blue");
     });
   },
 };
