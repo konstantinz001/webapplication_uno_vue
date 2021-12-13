@@ -30,6 +30,7 @@ export default {
       wishColor: "",
       wishValue: "",
       index: 0,
+      setStack: false,
     };
   },
 
@@ -37,6 +38,71 @@ export default {
     sendMessage: function (message) {
       console.log(this.connection);
       this.connection.send(message);
+    },
+
+    returnFromColorCards: function () {
+      let options = {
+        headers: { "Content-Type": "application/" },
+        url: "http://localhost:9000/tui",
+        method: "get",
+      };
+      let result = axios(options);
+    },
+
+    setEvent: function () {
+      let ref = this;
+      for (let i = 0; i < ref.index; i++) {
+        if (document.getElementById(i).getAttribute("src").includes("Black_")) {
+          document.getElementById(i).addEventListener("click", function () {
+            ref.setBlackCard(i);
+          });
+        } else {
+          document.getElementById(i).addEventListener("click", function () {
+            ref.setCard(i);
+          });
+        }
+      }
+
+      document.getElementById("unoCall").addEventListener("click", function () {
+        if (this.callUno === true) {
+          this.callUno = false;
+          let imgSrc = require("@/assets/pics/UNO_Logo.png");
+          $("#unoCall").attr("src", imgSrc);
+        } else {
+          this.callUno = true;
+          let imgSrc = require("@/assets/pics/CallUno.png");
+          $("#unoCall").attr("src", imgSrc);
+        }
+      });
+
+      if (ref.setStack === false) {
+        document
+          .getElementById("pullStack")
+          .addEventListener("click", function () {
+            console.log(ref.setStack);
+            ref.setStack = true;
+            ref.getCard();
+          });
+      }
+
+      document.getElementById("wishRed").addEventListener("click", function () {
+        ref.setWishColor("red");
+      });
+      document
+        .getElementById("wishGreen")
+        .addEventListener("click", function () {
+          ref.setWishColor("green");
+        });
+      document
+        .getElementById("wishYellow")
+        .addEventListener("click", function () {
+          ref.setWishColor("yellow");
+        });
+      document
+        .getElementById("wishBlue")
+        .addEventListener("click", function () {
+          ref.setWishColor("blue");
+        });
     },
 
     setCardPicPath: function (card) {
@@ -131,28 +197,17 @@ export default {
         index = index + 1;
       });
 
-      for (let i = 0; i < index; i++) {
-        if (document.getElementById(i).getAttribute("src").includes("Black_")) {
-          document.getElementById(i).addEventListener("click", function () {
-            ref.setBlackCard(i);
-          });
-        } else {
-          document.getElementById(i).addEventListener("click", function () {
-            ref.setCard(i);
-          });
-        }
-      }
-
       if (this.wishColor != "") {
         this.wishColor = "";
         this.wishValue = "";
-        location.reload();
+        ref.returnFromColorCards();
       }
       this.index = index;
+      ref.setEvent();
     },
 
     setBlackCard: async function (cardIndex) {
-      $("#uno-GameField").empty();
+      $("#uno-GameField").css("visibility", "collapse");
       $("#wishGame-GameField").css("visibility", "visible");
       this.wishValue = cardIndex;
     },
@@ -187,13 +242,6 @@ export default {
       };
       console.log(json);
       let result = await axios(options);
-      const {
-        playStackCard,
-        playernameCurrent,
-        playernameNext,
-        playerCardsCurrent,
-        playerCardsNext,
-      } = result;
       ref.updateGame;
     },
 
@@ -220,29 +268,6 @@ export default {
       } = result;
       ref.updateGame;
     },
-    newGame: async function () {
-      var ref = this;
-      let json = "";
-      json = JSON.stringify({
-        get: {},
-      });
-      let options = {
-        headers: { "Content-Type": "application/json" },
-        url: "http://localhost:9000/newGame",
-        method: "get",
-        data: json,
-      };
-      console.log(json);
-      let result = await axios(options);
-      const {
-        playStackCard,
-        playernameCurrent,
-        playernameNext,
-        playerCardsCurrent,
-        playerCardsNext,
-      } = result;
-      ref.updateGame;
-    },
   },
   created() {
     var ref = this;
@@ -253,9 +278,7 @@ export default {
       console.log("Successfully connected to UNO-Websocket Server");
     };
     this.connection.onclose = function () {
-      console.log(
-        "Successfully closed connection to UNO-Websocket Server"
-      );
+      console.log("Successfully closed connection to UNO-Websocket Server");
     };
     this.connection.onerror = function (error) {
       console.log("Error occured in UNO-Websocket Server: " + error);
@@ -265,6 +288,7 @@ export default {
         console.log(e.data);
         //let unofield = new UnoField;
         let result = JSON.parse(e.data);
+        
         ref.playStackCard = result.game.playStackCard;
         ref.playernameCurrent = result.game.playerListNameCurrent;
         ref.playerCardsCurrent = result.game.playerListCardsCurrent;
@@ -278,40 +302,6 @@ export default {
 
   mounted() {
     var ref = this;
-    document.getElementById("unoCall").addEventListener("click", function () {
-      if (this.callUno === true) {
-        this.callUno = false;
-        let imgSrc = require("@/assets/pics/UNO_Logo.png");
-        $("#unoCall").attr("src", imgSrc);
-      } else {
-        this.callUno = true;
-        let imgSrc = require("@/assets/pics/CallUno.png");
-        $("#unoCall").attr("src", imgSrc);
-      }
-    });
-
-    document.getElementById("pullStack").addEventListener("click", function () {
-      ref.getCard();
-    });
-
-    document.getElementById("wishRed").addEventListener("click", function () {
-      ref.setWishColor("red");
-    });
-    document.getElementById("wishGreen").addEventListener("click", function () {
-      ref.setWishColor("green");
-    });
-    document
-      .getElementById("wishYellow")
-      .addEventListener("click", function () {
-        ref.setWishColor("yellow");
-      });
-    document.getElementById("wishBlue").addEventListener("click", function () {
-      ref.setWishColor("blue");
-    });
-
-    document.getElementById("New Game").addEventListener("click", function () {
-      ref.newGame();
-    });
   },
 };
 </script>

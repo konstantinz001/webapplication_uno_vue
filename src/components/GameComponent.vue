@@ -25,6 +25,7 @@
       </div>
     </div>
 
+    
     <div id="wishGame-GameField">
       <div class="maincontent_Center">
         <div id="wishMessage">WishColor!</div>
