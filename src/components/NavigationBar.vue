@@ -7,7 +7,7 @@
     </v-card-title>
 
     <v-tabs background-color="#ECF0F1" color="basil" grow>
-      <v-tab v-for="item in items" :key="item.title" :to="item.to">
+      <v-tab v-for="item in items" :id="item.title" :key="item.title" :to="item.to">
         {{ item.title }}
       </v-tab>
     </v-tabs>
