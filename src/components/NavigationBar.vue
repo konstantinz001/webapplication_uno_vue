@@ -25,11 +25,11 @@
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> 3 bars icon -->
     <!-- <a class="navbar-brand" href="/"><img src="images/pics/UNO_Logo.png" width="50"></a>-->
     <!-- <v-toolbar-title>UNO</v-toolbar-title> -->
-    <v-toolbar-side-icon>
+    <v-app-bar-nav-icon>
         <v-img src="../assets/pics/UNO_Logo.png" width="50" />
-    </v-toolbar-side-icon> 
+    </v-app-bar-nav-icon> 
 
-    <v-tabs align-with-title="true" background-color="#343a40" color="#000000"> 
+    <v-tabs background-color="#343a40" color="#000000"> 
     <!-- <v-tabs color="#343a40 black-4"> -->
       <v-tab v-for="item in items" :id="item.title" :key="item.title" :to="item.to">
         {{ item.title }}
