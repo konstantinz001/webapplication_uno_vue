@@ -202,3 +202,25 @@ export default {
 }
 </script>
 
+<style scoped>
+  a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:hover {
+    color: burlywood;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  a:active {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+</style>
