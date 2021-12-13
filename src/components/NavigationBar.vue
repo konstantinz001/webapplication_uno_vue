@@ -1,20 +1,3 @@
-<!-- <template>
-  <v-card color="basil">
-    <v-card-title class="text-center justify-center py-0">
-      <h1 class="font-weight-bold text-h2 basil--text">
-        UNO - WEB APPLICATION
-      </h1>
-    </v-card-title>
-
-    <v-tabs background-color="#ECF0F1" color="basil" grow>
-      <v-tab v-for="item in items" :id="item.title" :key="item.title" :to="item.to">
-        {{ item.title }}
-      </v-tab>
-    </v-tabs>
-  </v-card>
-</template> -->
-
-
 <template>
   <div>
     <v-app-bar
@@ -22,10 +5,8 @@
       dense
       dark
     >
-      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> 3 bars icon -->
-    <!-- <a class="navbar-brand" href="/"><img src="images/pics/UNO_Logo.png" width="50"></a>-->
-    <!-- <v-toolbar-title>UNO</v-toolbar-title> -->
-    <v-app-bar-nav-icon>
+
+    <v-app-bar-nav-icon href="http://localhost:8080/">
         <v-img src="../assets/pics/UNO_Logo.png" width="50" />
     </v-app-bar-nav-icon> 
 
@@ -51,25 +32,7 @@
         left
         bottom
       >
-        <!-- <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template> -->
 
-        <!-- <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list> -->
       </v-menu>
     </v-app-bar>
   </div>
@@ -88,14 +51,3 @@ export default {
   },
 };
 </script>
-
-
-<!-- <style>
-/* Helper classes */
-.basil {
-  background-color: #000000 !important;
-}
-.basil--text {
-  color: #a81c33 !important;
-}
-</style> -->
