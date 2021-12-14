@@ -1,54 +1,52 @@
 <template>
   <div>
-    <br /><br /><br />
+    <br />
+    <br />
+    <br />
     <div class="maincontent_Center">
-      <h1>UNO-WebApplication</h1>
-      <br />
-      <img src="../assets/pics/UNO_Logo.png" width="300" /> <br />
-      The classic Uno-Game, created in Scala. A project for the course
-      Web-Applicationen. <br />
-      By
-      <a href="https://github.com/konstantinz001/" target="_blank"
-        >Konstantin Zabaznov</a
-      >
-      and
-      <a href="https://github.com/JeSuisUneLicorne/" target="_blank"
-        >Julian Zimmermann</a
-      >.<br />
 
+      <h1>UNO - Web Application</h1>
+      <br />
+      <img src="../assets/pics/UNO_Logo.png" width="300"/>
+      <br />
+      <br />
+      The classic UNO-Game, created in Scala. This is the coursework for Web Applications class at <a href="https://www.htwg-konstanz.de/">University of Applied Sciences Constance (HTWG Konstanz)</a> for fall 2021.
+      <br />
+      By <a href="https://github.com/konstantinz001/" target="_blank">Konstantin Zabaznov</a> and <a href="https://github.com/JeSuisUneLicorne/" target="_blank">Julian Zimmermann</a>.
+      <br />
+      <br />
       <hr />
 
       <h3>Setup</h3>
-      The game is for 2 player. The Draw Pile contains 108 cards. Each player
-      takes seven cards form the Draw Pile.<br />
-      The top card from the Draw Pile will be placed in the Discard Pile, and
+      The game is for two players. The draw pile contains 108 cards. Each player
+      takes seven cards form the draw pile.<br />
+      The top card from the draw pile will be placed in the discard pile, and
       the game begins!<br />
 
       <hr />
 
       <h3>Game Play</h3>
-      You have to match either by the number, color, or the symbol/Action with
-      the Discard Pile. For example,
+      You have to match either by the number, color, or the symbol/action with
+      the discard pile. For example,
       <br />
-      if the Discard Pile has a red card with the number 8 you have to place
+      if the discard pile has a red card with the number 8 you have to place
       either a red card or a card with an 8 on it.
       <br />
-      You can also play a Wild card (which can alter current color in play).<br />
+      You can also play a wild card (which can alter current color in play).<br />
       <br />
       If the player has no matches or they choose not to play any of their cards
       even though they might have a match,
       <br />
-      they must draw a card from the Draw pile.<br />
+      they must draw a card from the draw pile.<br />
       <br />
-      If a player put a Card on the Discard Pile or take a card from the Draw
-      Pile, the game moves on to the next person in turn. <br />
-      You can also play a Wild card, or a Wild Draw Four card on your turn.<br />
+      If a player put a card on the discard pile or take a card from the draw
+      pile, the game moves on to the other player. <br />
+      You can also play a wild card, or a wild draw four card on your turn.<br />
       The game continues until a player has two card left. The moment a player
-      has just two card they must call “UNO!” to put <br />
-      another card on the Discard Pile. If they are not calling “Uno”, that
-      player must draw two new cards as a penalty. If a player <br />
-      call to early "UNO!", that player must also draw two new cards<br />
-      To wining the game the player with only one card must call "UNO!" again.
+      has just two card they must call “UNO!” (the button at the top right corner) <br />
+      to put another card on the discard pile. If he is not calling “UNO!”, he must draw two new cards as a penalty. <br />
+      If a player call too early "UNO!", that player must also draw two new cards as a penalty.<br />
+      To win the game the player with only one card must call "UNO!" again and place his last card on the discard pile.
       <br />
 
       <hr />
@@ -61,34 +59,31 @@
         <li><b>Reverse:</b></li>
         <ul>
           If going clockwise, switch to counterclockwise. It can only be played
-          on a card that matches by color, or on another Reverse card.
+          on a card that matches by color, or on another reverse card.
         </ul>
         <br />
         <li><b>Skip:</b></li>
         <ul>
-          When a player places this card, the next player has to skip their
-          turn. It can only be played on a card that matches by color,
-          <br />
-          or on another Skip card.
+          When a player places this card, the next player has to skip their turn. It can only be played on a card that matches by color, or on another skip card.
         </ul>
         <br />
         <li><b>Draw Two:</b></li>
         <ul>
-          When a person places this card, the next player will have to pick up
+          When a player places this card, the other player will have to pick up
           two cards and forfeit his/her turn. It can only be played on<br />
-          a card that matches by color, or on another Draw Two
+          a card that matches by color, or on another draw two.
         </ul>
         <br />
         <li><b>Wild:</b></li>
         <ul>
           This card represents all four colors, and can be placed on any card.
-          The player has to state which color it will represent
+          The player, who used this card, can wish for a color, which the other player has to play.
         </ul>
         <br />
         <li><b>Wild - Draw Four:</b></li>
         <ul>
           This acts just like the wild card except that the next player also has
-          to draw four cards
+          to draw four cards.
         </ul>
       </ul>
     </div>
@@ -96,7 +91,7 @@
     <div class="maincontent_Center">
       <hr />
 
-      <h3>The Game</h3>
+  <!--    <h3>The Game</h3>
       <img src="../assets/pics/GameField3.png" width="500" />
       <br />
       <h3>Graphical UI</h3>
@@ -134,8 +129,9 @@
       <img src="../assets/pics/GameField6.png" width="500" />
       <br /><br />
 
-      <hr />
+      <hr />  -->
 
+  <!-- TODO: Check whats usable and write it
       <h3>Technical UI</h3>
       You can write various instructions to play with the TUI.
       <br />
@@ -184,7 +180,7 @@
         </ul>
         <br />
       </ul>
-      <br />
+      <br /> -->
       <div class="maincontent_Center">
         <a
           href="https://github.com/konstantinz001/UNO_WebApplication"
